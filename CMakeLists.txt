@@ -25,6 +25,9 @@ add_executable(ocpppp "${sources}")
 target_include_directories(ocpppp PUBLIC "${OCPPPP_SOURCE_DIR}/src")
 target_include_directories(ocpppp PUBLIC "${OCPPPP_SOURCE_DIR}/external/include")
 
+add_library(ocpppp_lib INTERFACE)
+target_include_directories(ocpppp_lib INTERFACE "${OCPPPP_SOURCE_DIR}/lib")
+
 CPMAddPackage(
   NAME cppast
   GITHUB_REPOSITORY foonathan/cppast
@@ -38,3 +41,5 @@ CPMAddPackage(
   VERSION 2.2.1
 )
 target_link_libraries(ocpppp PUBLIC cxxopts)
+
+# ocpppp_generate(generated "${OCPPPP_SOURCE_DIR}/tests" "test1.cpp")
