@@ -30,7 +30,7 @@ target_include_directories(ocpppp_lib INTERFACE "${OCPPPP_SOURCE_DIR}/lib")
 
 CPMAddPackage(
   NAME cppast
-  GITHUB_REPOSITORY foonathan/cppast
+  GITHUB_REPOSITORY topisani/cppast
   GIT_TAG master
 )
 target_link_libraries(ocpppp PUBLIC cppast)

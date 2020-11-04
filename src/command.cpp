@@ -54,7 +54,7 @@ namespace ocpppp {
       cxxopts::value<std::string>())
       ("database_file", "set the file name whose configuration will be used regardless of the current file name",
       cxxopts::value<std::string>())
-      ("std", "set the C++ standard (c++98, c++03, c++11, c++14, c++1z (experimental))",
+      ("std", "set the C++ standard (c++98, c++03, c++11, c++14, c++1z (experimental), c++20)",
        cxxopts::value<std::string>()->default_value(cppast::to_string(cppast::cpp_standard::cpp_latest)))
       ("I,include_directory", "add directory to include search path",
        cxxopts::value<std::vector<std::string>>())
@@ -135,6 +135,8 @@ namespace ocpppp {
           config.set_flags(cppast::cpp_standard::cpp_14, flags);
         else if (options["std"].as<std::string>() == "c++1z")
           config.set_flags(cppast::cpp_standard::cpp_1z, flags);
+        else if (options["std"].as<std::string>() == "c++20")
+          config.set_flags(cppast::cpp_standard::cpp_2a, flags);
         else {
           print_error("invalid value '" + options["std"].as<std::string>() + "' for std flag");
           return {nullptr, options};
