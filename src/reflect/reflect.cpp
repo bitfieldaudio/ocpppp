@@ -51,7 +51,7 @@ namespace ocpppp::reflect {
         for (auto& param : templ.parameters()) {
           if (param.kind() == cppast::cpp_entity_kind::template_type_parameter_t) {
             auto& tt = static_cast<const cppast::cpp_template_type_parameter&>(param);
-            res += to_string(tt.keyword());
+            res += tt.keyword_or_constraint().spelling();
           } else if (param.kind() == cppast::cpp_entity_kind::non_type_template_parameter_t) {
             auto& tt = static_cast<const cppast::cpp_non_type_template_parameter&>(param);
             res += to_string(tt.type());
