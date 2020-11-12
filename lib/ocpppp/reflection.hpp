@@ -5,14 +5,19 @@
 
 namespace otto::reflect {
 
+  namespace detail {
+    constexpr auto test_visitor = [] (std::string_view, auto&) {};
+    constexpr auto const_test_visitor = [] (std::string_view, const auto&) {};
+  }
+
   template<typename T>
   struct visitable {};
 
   template<typename T>
   concept AVisitable = requires(T& t, const T& ct)
   {
-    visitable<T>::visit(t, [] (std::string_view, auto&)) {});
-    visitable<T>::visit(ct, [] (std::string_view, const auto&)) {});
+    visitable<T>::visit(t, detail::test_visitor);
+    visitable<T>::visit(ct, detail::const_test_visitor);
   };
 
   template<typename T>
