@@ -6,10 +6,9 @@ namespace ocpppp::reflect {
   inline const std::string attribute_name = "otto::reflect";
   inline const std::string skip_attribute_name = "otto::reflect_skip";
 
-  inline const std::string file_template = R"inja(
-#pragma once
+  inline const std::string file_template = R"inja(#pragma once
 
-#include <ocpppp/reflection.hpp>
+#include "lib/reflect.hpp"
 #include "{{input_include}}"
 
 namespace otto::reflect {

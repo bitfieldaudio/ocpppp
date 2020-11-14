@@ -25,9 +25,6 @@ add_executable(ocpppp "${sources}")
 target_include_directories(ocpppp PUBLIC "${OCPPPP_SOURCE_DIR}/src")
 target_include_directories(ocpppp PUBLIC "${OCPPPP_SOURCE_DIR}/external/include")
 
-add_library(ocpppp_lib INTERFACE)
-target_include_directories(ocpppp_lib INTERFACE "${OCPPPP_SOURCE_DIR}/lib")
-
 CPMAddPackage(
   NAME cppast
   GITHUB_REPOSITORY topisani/cppast

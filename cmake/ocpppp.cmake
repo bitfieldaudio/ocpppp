@@ -8,13 +8,12 @@ function(ocpppp_generate TARGET_NAME WORKING_DIRECTORY COMPILE_COMMANDS_DIR INPU
       COMMAND ${CMAKE_COMMAND} -E "rm" "-rf" "${OUT_FILE}"
       COMMAND ocpppp "${WORKING_DIRECTORY}/${file}" "${OUT_FILE}" "--database_dir" "${COMPILE_COMMANDS_DIR}" "--std" "c++20"
       COMMAND "clang-format" "-i" "${OUT_FILE}"
-      DEPENDS ocpppp "${WORKING_DIRECTORY}/${file}" "${COMPILE_COMMANDS_DIR}/compile_commands.json"
+      DEPENDS "${WORKING_DIRECTORY}/${file}" "${COMPILE_COMMANDS_DIR}/compile_commands.json"
     )
     list(APPEND OCPPPP_GENERATED_FILES "${OUT_FILE}")
   endforeach()
   add_library(${TARGET_NAME} INTERFACE)
   target_include_directories(${TARGET_NAME} INTERFACE "${OUTPUT_DIR}")
-  target_link_libraries(${TARGET_NAME} INTERFACE ocpppp_lib)
 
   add_custom_target(ocpppp_${TARGET_NAME}_headers ALL DEPENDS "${OCPPPP_GENERATED_FILES}")
   add_dependencies(${TARGET_NAME} ocpppp_${TARGET_NAME}_headers)
