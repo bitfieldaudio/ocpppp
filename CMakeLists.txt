@@ -28,7 +28,7 @@ target_include_directories(ocpppp PUBLIC "${OCPPPP_SOURCE_DIR}/external/include"
 CPMAddPackage(
   NAME cppast
   GITHUB_REPOSITORY topisani/cppast
-  GIT_TAG 1d1f935af035b3d7ba4f86bf3dff01a953c675b9
+  GIT_TAG 754ebb004cc8cc2059bf85362be4b616759cc582
 )
 target_link_libraries(ocpppp PUBLIC cppast)
 
